@@ -1,5 +1,3 @@
-
-
 public interface FeeStrategy {
-    double calculateFee(ParkingTicket ticket);
+    double calculate(ParkingTicket ticket);
 }

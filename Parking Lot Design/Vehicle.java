@@ -1,28 +1,25 @@
-
-import java.util.Objects;
-
 public class Vehicle {
-    private final String licenseNumber;
-    private final VehicleType vehicleType;
+    private final String number;
+    private final VehicleType type;
 
-    public Vehicle(String licenseNumber, VehicleType vehicleType) {
-        this.licenseNumber = Objects.requireNonNull(licenseNumber, "licenseNumber cannot be null");
-        this.vehicleType = Objects.requireNonNull(vehicleType, "vehicleType cannot be null");
+    public Vehicle(String number, VehicleType type) {
+        this.number = number;
+        this.type = type;
     }
 
-    public String getLicenseNumber() {
-        return licenseNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public VehicleType getVehicleType() {
-        return vehicleType;
+    public VehicleType getType() {
+        return type;
     }
 
     @Override
     public String toString() {
         return "Vehicle{" +
-            "licenseNumber='" + licenseNumber + '\'' +
-            ", vehicleType=" + vehicleType +
-            '}';
+                "number='" + number + '\'' +
+                ", type=" + type +
+                '}';
     }
 }
