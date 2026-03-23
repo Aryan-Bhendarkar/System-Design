@@ -28,6 +28,9 @@ public class Player {
     }
 
     public void setPosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("Player position cannot be negative.");
+        }
         this.position = position;
     }
 }
