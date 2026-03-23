@@ -1,6 +1,5 @@
-
 public enum PenState {
     CAPPED,
-    READY,
+    OPEN,
     OUT_OF_INK
 }

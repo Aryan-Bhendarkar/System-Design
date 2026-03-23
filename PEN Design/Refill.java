@@ -1,48 +1,38 @@
-
-
 public class Refill {
-    private final String brand;
     private final InkColor inkColor;
-    private final double capacity;
+    private final double maxInk;
     private double remainingInk;
 
-    public Refill(String brand, InkColor inkColor, double capacity) {
-        if (capacity <= 0) {
-            throw new IllegalArgumentException("Capacity should be > 0");
+    public Refill(InkColor inkColor, double maxInk) {
+        if (maxInk <= 0) {
+            throw new IllegalArgumentException("maxInk should be greater than 0");
         }
-        this.brand = brand;
         this.inkColor = inkColor;
-        this.capacity = capacity;
-        this.remainingInk = capacity;
-    }
-
-    public String getBrand() {
-        return brand;
+        this.maxInk = maxInk;
+        this.remainingInk = maxInk;
     }
 
     public InkColor getInkColor() {
         return inkColor;
     }
 
-    public double getCapacity() {
-        return capacity;
-    }
-
     public double getRemainingInk() {
         return remainingInk;
     }
 
-    public boolean hasInk() {
-        return remainingInk > 0;
+    public void useInk(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Ink amount cannot be negative");
+        }
+        remainingInk = Math.max(0, remainingInk - amount);
     }
 
-    public void consume(double amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Ink consumption cannot be negative");
-        }
-        if (amount > remainingInk) {
-            throw new PenOperationException("Not enough ink available in refill");
-        }
-        remainingInk -= amount;
+    @Override
+    public String toString() {
+        return "Refill{" +
+                "inkColor=" + inkColor +
+                ", maxInk=" + maxInk +
+                ", remainingInk=" + remainingInk +
+                '}';
     }
 }

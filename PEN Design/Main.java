@@ -1,23 +1,20 @@
-
-
 public class Main {
     public static void main(String[] args) {
-        Pen pen = PenFactory.createBallPen("P-101", "Reynolds", TipType.MEDIUM, InkColor.BLUE);
+        Refill refill = new Refill(InkColor.BLUE, 10.0);
+        InkUsageStrategy inkUsageStrategy = new SimpleInkUsageStrategy();
+        Pen pen = new Pen("P-101", "Reynolds", PenType.BALL, refill, inkUsageStrategy);
 
-        System.out.println("Initial: " + pen.getSummary());
+        System.out.println("Initial: " + pen);
 
         pen.openCap();
-        pen.write("Low level design interview question", 1.2);
-        System.out.println("After write 1: " + pen.getSummary());
-
-        pen.write("Design should be clean and extensible", 1.0);
-        System.out.println("After write 2: " + pen.getSummary());
+        pen.write("hello lld");
+        pen.write("beginner design");
+        System.out.println("After writing: " + pen);
 
         pen.closeCap();
-        System.out.println("After close cap: " + pen.getSummary());
+        System.out.println("After closing cap: " + pen);
 
-        // Simulate refill replacement when needed.
-        pen.replaceRefill(new Refill("Reynolds-NewRefill", InkColor.BLUE, 12.0));
-        System.out.println("After refill replacement: " + pen.getSummary());
+        pen.replaceRefill(new Refill(InkColor.BLUE, 8.0));
+        System.out.println("After refill change: " + pen);
     }
 }
